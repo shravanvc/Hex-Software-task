@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Gradecalculator {
 
-    // A simple class to hold a student's data
     static class Student {
         String name;
         int totalMarks;
@@ -39,10 +38,10 @@ public class Gradecalculator {
 
             if (scan.hasNextInt()) {
                 choice = scan.nextInt();
-                scan.nextLine(); // Consume the newline character
+                scan.nextLine(); 
             } else {
                 System.out.println("Invalid input. Please enter a number.");
-                scan.nextLine(); // Clear the invalid input from the scanner
+                scan.nextLine();
                 continue;
             }
 
@@ -63,9 +62,7 @@ public class Gradecalculator {
         scan.close();
     }
 
-    /**
-     * Guides the user to input data for a new student and adds them to the list.
-     */
+  
     private static void addStudent() {
         System.out.print("Enter student's name: ");
         String name = scan.nextLine();
@@ -76,7 +73,7 @@ public class Gradecalculator {
             numSubjects = scan.nextInt();
         } catch (java.util.InputMismatchException e) {
             System.out.println("Invalid input. Please enter a number for subjects.");
-            scan.nextLine(); // Clear invalid input
+            scan.nextLine();
             return;
         }
 
@@ -87,9 +84,7 @@ public class Gradecalculator {
         }
     }
 
-    /**
-     * Prints the results for all students currently stored in the list.
-     */
+  
     private static void viewAllStudents() {
         if (students.isEmpty()) {
             System.out.println("No student data available. Please add a student first.");
@@ -101,12 +96,7 @@ public class Gradecalculator {
         }
     }
 
-    /**
-     * Calculates the total marks, average percentage, and grade for a single student.
-     * @param name The name of the student.
-     * @param numSubjects The number of subjects.
-     * @return A new Student object with calculated results, or null if input is invalid.
-     */
+   
     private static Student calculateStudentResults(String name, int numSubjects) {
         if (numSubjects <= 0) {
             System.out.println("Number of subjects must be greater than zero.");
@@ -121,12 +111,12 @@ public class Gradecalculator {
                 marks = scan.nextInt();
             } else {
                 System.out.println("Invalid input. Please enter a number for marks.");
-                scan.nextLine(); // Clear invalid input
+                scan.nextLine(); 
                 return null;
             }
-            scan.nextLine(); // Consume newline
+            scan.nextLine(); 
 
-            // INPUT VALIDATION
+            
             while (marks < 0 || marks > 100) {
                 System.out.println("Invalid marks. Please enter marks between 0 and 100.");
                 System.out.print("Enter marks for subject " + i + " (out of 100): ");
@@ -134,10 +124,10 @@ public class Gradecalculator {
                     marks = scan.nextInt();
                 } else {
                     System.out.println("Invalid input. Please enter a number for marks.");
-                    scan.nextLine(); // Clear invalid input
+                    scan.nextLine(); 
                     return null;
                 }
-                scan.nextLine(); // Consume newline
+                scan.nextLine();
             }
             totalMarks += marks;
         }
@@ -154,11 +144,7 @@ public class Gradecalculator {
         return new Student(name, totalMarks, averagePercentage, grade);
     }
 
-    /**
-     * Determines the grade based on the average percentage.
-     * @param averagePercentage The calculated average percentage.
-     * @return The corresponding grade as a String.
-     */
+    
     public static String calculateGrade(double averagePercentage) {
         if (averagePercentage >= 90) {
             return "A+";
@@ -179,3 +165,4 @@ public class Gradecalculator {
         }
     }
 }
+
